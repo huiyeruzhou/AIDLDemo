@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyDemo</string>
+    <string name="add">add</string>
+    <string name="enter_next_value">Enter Next Value</string>
+    <string name="enter_first_value">Enter First Value</string>
+    <string name="result">Result</string>
+    <string name="subtract">Subtract</string>
+    <string name="multiply">Multiply</string>
+    <string name="division">Division</string>
+</resources>
