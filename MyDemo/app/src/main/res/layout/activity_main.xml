@@ -9,20 +9,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true">
 
         <TextView
+            android:id="@+id/display_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/display_result"
             android:layout_margin="20dp"
-            android:padding="15dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:hint="@string/result"
             android:background="#FDF171"
-            />
+            android:hint="@string/result"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/enter_first_value"
@@ -33,33 +32,36 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_first_value"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="5"
-            android:singleLine="true"
-            android:autofillHints="" />
+            android:singleLine="true" />
 
         <EditText
+            android:id="@+id/enter_next_value"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:id="@+id/enter_next_value"
             android:layout_below="@+id/enter_first_value"
-            android:layout_margin="20dp"
-            android:maxLength="5"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints=""
             android:ems="10"
-            android:inputType="number"
-            android:singleLine="true"
             android:hint="@string/enter_next_value"
-            android:autofillHints="" />
+            android:inputType="number"
+            android:maxLength="5"
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/addition"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/enter_next_value"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:background="#0288D1"
             android:text="@string/add"
             android:textAllCaps="false"
@@ -82,8 +84,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/addition"
-            android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="#0288D1"
             android:text="@string/multiply"
@@ -97,25 +99,27 @@
             android:layout_below="@+id/subtract"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/addition"
+            android:layout_toEndOf="@+id/multiply"
             android:background="#0288D1"
             android:text="@string/division"
             android:textAllCaps="false"
             android:textColor="#ffff" />
+
         <Button
+            android:id="@+id/clear_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/clear_data"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/division"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="Clear Data" />
+
         <Button
+            android:id="@+id/bind_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bind_service"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/clear_data"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="Bind Service" />
     </RelativeLayout>

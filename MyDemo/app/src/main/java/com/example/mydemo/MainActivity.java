@@ -22,7 +22,6 @@ import ServicePackage.IMyDemoInterface;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
-
     private TextView textViewDisplayResult;
     private EditText editTextFirstValue, editTextNextValue;
     private Button buttonAdd,buttonSubtract, buttonMultiply, buttonDivide, buttonClearData,buttonBind;
@@ -50,25 +49,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonMultiply.setOnClickListener(this);
         buttonClearData.setOnClickListener(this);
         buttonBind.setOnClickListener(this);
-        //bindToDemoService();
     }
     private void bindToDemoService() {
-        //Intent serviceIntent = new Intent ("connect_to_demo_service");
         Toast.makeText(MainActivity.this, "Service connecting", Toast.LENGTH_SHORT).show();
         Intent serviceIntentExplicit = new Intent();
         serviceIntentExplicit.setComponent(new ComponentName("com.example.myservicedemo", "com.example.myservicedemo.MyService"));
 
 
          boolean qaq = bindService(
-//                getExplicitIntent(this,serviceIntent),
                 serviceIntentExplicit,
                 serviceConnectionObject,Context.BIND_AUTO_CREATE);
-//        startService(serviceIntentExplicit);
         if (!qaq) {
-            throw new AssertionError();
+            Toast.makeText(MainActivity.this, "Please start server", Toast.LENGTH_SHORT).show();
         }
 
-        Toast.makeText(MainActivity.this, serviceConnectionObject.toString(), Toast.LENGTH_SHORT).show();
     }
 
     ServiceConnection serviceConnectionObject = new ServiceConnection() {
@@ -136,7 +130,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if(isAnyValueMissing())
         {
             Toast.makeText(this,"Please enter the values", Toast.LENGTH_SHORT).show();
-        } else{
+        } else if (aidlObject==(null)) {
+            Toast.makeText(this,"Please bind services", Toast.LENGTH_SHORT).show();
+        }
+        else{
             int result,firstValue,nextValue;
             firstValue = Integer.parseInt(editTextFirstValue.getText().toString());
             nextValue = Integer.parseInt(editTextNextValue.getText().toString());
@@ -147,11 +144,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }catch (RemoteException e){
                 e.printStackTrace();
             }
-            //            result = performCalculation(firstValue,nextValue,operator);
+//                        result = performCalculation(firstValue,nextValue,operator);
 //            textViewDisplayResult.setText(""+result);
         }
 
 
+    }
+    private boolean isAnyValueMissing() {
+        return editTextFirstValue.getText().toString().isEmpty() ||
+                editTextNextValue.getText().toString().isEmpty();
     }
 
 //    private int performCalculation(int firstValue, int nextValue, int operator) {
@@ -171,9 +172,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //
 //        }
 //    }
-    private boolean isAnyValueMissing() {
-        return editTextFirstValue.getText().toString().isEmpty() ||
-                editTextNextValue.getText().toString().isEmpty();
-    }
 
 }
